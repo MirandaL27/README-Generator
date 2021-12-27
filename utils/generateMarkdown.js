@@ -53,7 +53,8 @@ function generateMarkdown(data) {
   if(confirmAPIs){
     APIs = data.APIs.split(",").map(data => '* ' + data);
   }
-  technologies = technologies.map(data => '* ' + data);
+  console.log(technologies);
+  technologies = technologies.split(',').map(data => '* ' + data);
   let usage = data.usage.split(",").map(data => '* ' + data);
   let features = [];
   if(confirmFeatures){
@@ -67,9 +68,9 @@ function generateMarkdown(data) {
   return `## ${title}
   ## Description
   ${description}
-  
+
   ## Built With
-  ${technologies}
+  ${technologies.join(',')}
 
   ## Questions
   please direct all questions to:
@@ -78,7 +79,7 @@ function generateMarkdown(data) {
 
   ## Credits
   * ${name}
-  ${credits}
+  ${credits.join(',')}
 `;
 }
 

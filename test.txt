@@ -1,0 +1,17 @@
+{"name": "Miranda Lane",
+"email": "mirandalucsb@gmail.com",
+"username": "MirandaL27",
+"title": "README-Generator",
+"description": "An applilcation that generates high quality README's from data provided by the user.",
+"confirmTableOfContents": "True",
+"technologies": "Node",
+"confirmAPIs": "True",
+"APIs": "FS, Inquirer",
+"usage": "Installation: npm install, Run Project: Node Index",
+"license": "MIT",
+"confirmFeatures": "True",
+"features": "Takes user input through the command line, can take a filename as a command line argument, Can extract data from the user or from a file.",
+"credits":"", 
+"contributors": "No contributions from other developers are allowed for this project",
+"tests":""} 
+

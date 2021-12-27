@@ -2,6 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generatePage = require('./utils/generateMarkdown');
+//used if file with answers is provided
+const fileNameArgs = process.argv.slice(2);
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -61,10 +63,9 @@ const questions = [
         default: true
       },
       {
-        type: 'checkbox',
+        type: 'input',
         name: 'technologies',
-        message: 'What technologies did you use when building this project? (Check all that apply)',
-        choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap','Bulma','Foundation', 'Node']
+        message: 'List the technologies you used during this project separated by comma',
       },
       {
         type: 'confirm',
@@ -132,7 +133,9 @@ const promptUser = () => {
 
 // TODO: Create a function to initialize app
 function init() {
-    promptUser()
+    if(!fileNameArgs){
+        //use inquirer to display questions to the user and use the user input as data
+        promptUser()
         .then((data) => {
             const fileName = "./dist/README.md";
             console.log(fileName,data);
@@ -141,6 +144,28 @@ function init() {
         .catch(error =>{
             console.log(error)
         });
+    }
+    else{
+        //open the file provided by the user and get data from there.
+        //open file, 
+        //extract data, 
+        //write to README file
+        fs.readFile(fileNameArgs[0], 'utf8' , (err, data) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+            else{
+                // console.log(data);
+                // console.log(JSON.parse(data));
+                const fileName = "./dist/README.md";
+                return writeToFile(fileName, generatePage(JSON.parse(data)));
+            }
+        })
+        
+        
+    }
+
 }
 
 // Function call to initialize app
