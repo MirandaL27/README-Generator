@@ -82,13 +82,12 @@ const questions = [
         type: 'input',
         name: 'usage',
         message: 'Provide usage instructions for your project. Separate each instruction with a comma.',
-        default: 'Installation: npm install, Run project: node index'
       },
       {
         type: 'input',
         name: 'license',
         message: 'Provide a license for your project.',
-        default: 'MIC'
+        default: 'MIT'
       },
       {
         type: 'confirm',

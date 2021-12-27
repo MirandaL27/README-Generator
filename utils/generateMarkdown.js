@@ -47,27 +47,30 @@ var tableOfContents = (confirmTableOfContents) =>{
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  let {title,description,name,email,username, confirmTableOfContents, confirmAPIs, confirmFeatures} = data;
+  let {title,description,name,email,username, confirmTableOfContents, confirmAPIs, confirmFeatures, technologies} = data;
   let toc = tableOfContents(confirmTableOfContents);
-  let technologies = data.technologies.split(",");
   let APIs = [];
   if(confirmAPIs){
-    APIs = data.APIs.split(",");
+    APIs = data.APIs.split(",").map(data => '* ' + data);
   }
-  let usage = data.usage.split(",");
+  technologies = technologies.map(data => '* ' + data);
+  let usage = data.usage.split(",").map(data => '* ' + data);
   let features = [];
   if(confirmFeatures){
-    features = data.features.split(",");
+    features = data.features.split(",").map(data => '* ' + data);
   }
-  let credits = data.credits.split(",");
-  let contributors = data.credits.split(",");
-  let tests = data.tests.split(",");
+  let credits = data.credits.split(",").map(data => '* ' + data);
+
+  let contributors = data.credits.split(",").map(data => '* ' + data);
+  let tests = data.tests.split(",").map(data => '* ' + data);
   
   return `## ${title}
   ## Description
   ${description}
+  
   ## Built With
   ${technologies}
+
   ## Questions
   please direct all questions to:
   * github profile: ${username}
@@ -75,6 +78,7 @@ function generateMarkdown(data) {
 
   ## Credits
   * ${name}
+  ${credits}
 `;
 }
 
