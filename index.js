@@ -4,7 +4,6 @@ const fs = require('fs');
 const generatePage = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
-// tests
 const questions = [
     {
         type: 'input',
@@ -83,7 +82,7 @@ const questions = [
         type: 'input',
         name: 'usage',
         message: 'Provide usage instructions for your project. Separate each instruction with a comma.',
-        default: 'Installation: npm install, Run porject: node index'
+        default: 'Installation: npm install, Run project: node index'
       },
       {
         type: 'input',
@@ -105,8 +104,13 @@ const questions = [
       },
       {
         type: 'input',
+        name: 'credits',
+        message: 'List the other contributors to your project separated by comma:'
+      },
+      {
+        type: 'input',
         name: 'contributors',
-        message: 'List the contributors to your project separated by comma:'
+        message: 'List guidelines for other developers to contribute to your project, separate each guideline with a comma:'
       },
       {
           type: 'input',
