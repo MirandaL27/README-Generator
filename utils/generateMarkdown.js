@@ -33,23 +33,60 @@ function renderLicenseSection(license) {
     return "";
 }
 
-var tableOfContents = (confirmTableOfContents) =>{
+var tableOfContents = (confirmTableOfContents, sections) =>{
   if(!confirmTableOfContents){
     return '';
   }
   else{
     return `## Table Of Contents
-    * Usage
-    * Credits
-    * License
-    `
+  ${sections.tech ? '* [Technologies](#Built-With)' : ''}
+  ${sections.API ? '* [APIs](#APIs-Used)': ''}
+  ${sections.use ? '* [Usage](#Usage)' : ''}
+  ${sections.feat ? '* [Features](#Features)' : ''}
+  * [Questions](#Questions)
+  ${sections.lic ? '* [License](#License)' : ''}
+  ${sections.contrib ? '* [Contributions](#Contribution-Guidelines)' : ''}
+  ${sections.test ? '* [Tests](#Tests)' : ''}
+  * [Credits](Credits)
+  `
   }
+}
+
+var buildWithSection = (technologies) => {
+  return (technologies.length !=0 ? `## Built With
+  ${technologies.join("\r\n  ")}` : '');
+
+}
+
+var usageSection = (usage) =>{
+  return (usage.length !=0 ? `## Usage 
+  ${usage.join("\r\n  ")}` : '');
+}
+
+var contributionGuidelinesSection = (contributions) =>{
+  return (contributions.length != 0 ? `## Contribution Guidelines
+  ${contributions.join("\r\n")}` : '');
+}
+
+var testsSection = (tests) =>{
+  return ( tests.length != 0 ? `## Tests
+    ${tests.join("\r\n  ")}` : '');
+}
+
+var APIsSection = (APIs) =>{
+  return (APIs.length != 0 ? `## APIs Used
+  ${APIs.join("\r\n  ")}` : '');
+}
+
+var featuresSection = (features) =>{
+  return (features.length != 0 ? `## Features
+  ${features.join("\r\n  ")}` : '');
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   let {title,description,name,email,username, confirmTableOfContents, confirmAPIs, confirmFeatures, technologies, license} = data;
-  let toc = tableOfContents(confirmTableOfContents);
+  
   let APIs = [];
   if(confirmAPIs){
     APIs = data.APIs.split(",").map(data => '* ' + data);
@@ -65,16 +102,32 @@ function generateMarkdown(data) {
 
   let contributors = data.credits.split(",").filter(data => data).map(data => '* ' + data);
   let tests = data.tests.split(",").filter(data => data).map(data => '* ' + data);
+
+  let tocSection = {
+    tech : (technologies != 0),
+    API : (APIs.length != 0),
+    use : (usage.length != 0),
+    lic : (license != ''),
+    feat : (features.length != 0),
+    contrib : (contributors.length != 0),
+    test : (tests.length != 0)
+  }
+  console.log(tocSection);
+  let toc = tableOfContents(confirmTableOfContents, tocSection);
   
   return `## ${title}
   ## Description
   ${description}
 
-  ## Built With
-  ${technologies.join("\r\n")}
+  ${toc}
 
-  ## Usage
-  ${usage.join("\r\n")}
+  ${buildWithSection(technologies)}
+
+  ${APIsSection(APIs)}
+
+  ${usageSection(usage)}
+
+  ${featuresSection(features)}
 
   ## Questions
   please direct all questions to:
@@ -83,11 +136,9 @@ function generateMarkdown(data) {
 
   ${renderLicenseSection(license)}
 
-  ## Contribution Guidelines
-  ${contributors.join("\r\n")}
+  ${contributionGuidelinesSection(contributors)}
 
-  ## Tests
-  ${tests.join("\r\n")}
+  ${testsSection(tests)}
 
   ## Credits
   * ${name}

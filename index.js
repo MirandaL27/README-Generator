@@ -85,9 +85,10 @@ const questions = [
         message: 'Provide usage instructions for your project. Separate each instruction with a comma.',
       },
       {
-        type: 'input',
+        type: 'list',
         name: 'license',
         message: 'Provide a license for your project.',
+        choices: ["MIT", "GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "MPL-2.0", "Apache-2.0", "BSL-1.0"],
         default: 'MIT'
       },
       {
@@ -147,17 +148,12 @@ function init() {
     }
     else{
         //open the file provided by the user and get data from there.
-        //open file, 
-        //extract data, 
-        //write to README file
         fs.readFile(fileNameArgs[0], 'utf8' , (err, data) => {
             if (err) {
                 console.error(err)
                 return
             }
             else{
-                // console.log(data);
-                // console.log(JSON.parse(data));
                 const fileName = "./dist/README.md";
                 return writeToFile(fileName, generatePage(JSON.parse(data)));
             }
