@@ -47,7 +47,7 @@ var tableOfContents = (confirmTableOfContents, sections) =>{
   ${sections.lic ? '* [License](#License)' : ''}
   ${sections.contrib ? '* [Contributions](#Contribution-Guidelines)' : ''}
   ${sections.test ? '* [Tests](#Tests)' : ''}
-  * [Credits](Credits)
+  * [Credits](#Credits)
   `
   }
 }
