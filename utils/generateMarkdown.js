@@ -10,9 +10,21 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
+
+// This code is here for testing purposes only!
+  let licenseChoices = ["MIT", "GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "MPL-2.0", "Apache-2.0", "BSL-1.0"];
+  licenseChoices.forEach( data => {
+    var test = data.toLowerCase();
+    test = test.replaceAll("gnu ","");
+    test = test.replaceAll("v3", "-3.0")
+    console.log(`https://choosealicense.com/licenses/${test}/`);
+})
+//End Test Code
+
   if(license){
-    var lic = license.toLowerCase();
-    lic = lic.replaceAll("gnu","");
+    let lic = license.toLowerCase();
+    lic = lic.replaceAll("gnu ","");
+    lic = lic.replaceAll("v3","-3.0");
     return `https://choosealicense.com/licenses/${lic}/`
   }
     return "";
@@ -65,7 +77,7 @@ var usageSection = (usage) =>{
 
 var contributionGuidelinesSection = (contributions) =>{
   return (contributions.length != 0 ? `## Contribution Guidelines
-  ${contributions.join("\r\n")}` : '');
+  ${contributions.join("\r\n  ")}` : '');
 }
 
 var testsSection = (tests) =>{
@@ -112,7 +124,6 @@ function generateMarkdown(data) {
     contrib : (contributors.length != 0),
     test : (tests.length != 0)
   }
-  console.log(tocSection);
   let toc = tableOfContents(confirmTableOfContents, tocSection);
   
   return `## ${title}
