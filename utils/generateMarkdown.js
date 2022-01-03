@@ -103,16 +103,20 @@ function generateMarkdown(data) {
   if(confirmAPIs){
     APIs = data.APIs.split(",").map(data => '* ' + data);
   }
-  console.log(technologies);
+
   technologies = technologies.split(',').map(data => '* ' + data);
+
   let usage = data.usage.split(",").map(data => '* ' + data);
+
   let features = [];
   if(confirmFeatures){
     features = data.features.split(",").map(data => '* ' + data);
   }
+
   let credits = data.credits.split(",").filter(data => data).map(data => '* ' + data);
 
   let contributors = data.credits.split(",").filter(data => data).map(data => '* ' + data);
+  
   let tests = data.tests.split(",").filter(data => data).map(data => '* ' + data);
 
   let tocSection = {
@@ -153,7 +157,7 @@ function generateMarkdown(data) {
 
   ## Credits
   * ${name}
-  ${credits.join("\r\n")}
+  ${credits.join("\r\n  ")}
 `;
 }
 
