@@ -49,7 +49,6 @@ var tableOfContents = (confirmTableOfContents, sections) =>{
   if(!confirmTableOfContents){
     return '';
   }
-  else{
     return `## Table Of Contents
   ${sections.tech ? '* [Technologies](#Built-With)' : ''}
   ${sections.API ? '* [APIs](#APIs-Used)': ''}
@@ -61,7 +60,6 @@ var tableOfContents = (confirmTableOfContents, sections) =>{
   ${sections.test ? '* [Tests](#Tests)' : ''}
   * [Credits](#Credits)
   `
-  }
 }
 
 var buildWithSection = (technologies) => {
@@ -116,7 +114,7 @@ function generateMarkdown(data) {
   let credits = data.credits.split(",").filter(data => data).map(data => '* ' + data);
 
   let contributors = data.credits.split(",").filter(data => data).map(data => '* ' + data);
-  
+
   let tests = data.tests.split(",").filter(data => data).map(data => '* ' + data);
 
   let tocSection = {
