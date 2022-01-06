@@ -12,13 +12,13 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(license) {
 
 // This code is here for testing purposes only!
-  let licenseChoices = ["MIT", "GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "MPL-2.0", "Apache-2.0", "BSL-1.0"];
-  licenseChoices.forEach( data => {
-    var test = data.toLowerCase();
-    test = test.replaceAll("gnu ","");
-    test = test.replaceAll("v3", "-3.0")
-    console.log(`https://choosealicense.com/licenses/${test}/`);
-})
+//   let licenseChoices = ["MIT", "GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "MPL-2.0", "Apache-2.0", "BSL-1.0"];
+//   licenseChoices.forEach( data => {
+//     var test = data.toLowerCase();
+//     test = test.replaceAll("gnu ","");
+//     test = test.replaceAll("v3", "-3.0")
+//     console.log(`https://choosealicense.com/licenses/${test}/`);
+// })
 //End Test Code
 
   if(license){
@@ -63,6 +63,7 @@ var tableOfContents = (confirmTableOfContents, sections) =>{
 }
 
 var buildWithSection = (technologies) => {
+  console.log(technologies)
   return (technologies.length !=0 ? `## Built With
   ${technologies.join("\r\n  ")}` : '');
 
@@ -99,16 +100,16 @@ function generateMarkdown(data) {
   
   let APIs = [];
   if(confirmAPIs){
-    APIs = data.APIs.split(",").map(data => '* ' + data);
+    APIs = data.APIs.split(",").filter(data => data).map(data => '* ' + data);
   }
 
-  technologies = technologies.split(',').map(data => '* ' + data);
+  technologies = technologies.split(',').filter(data => data).map(data => '* ' + data);
 
-  let usage = data.usage.split(",").map(data => '* ' + data);
+  let usage = data.usage.split(",").filter(data => data).map(data => '* ' + data);
 
   let features = [];
   if(confirmFeatures){
-    features = data.features.split(",").map(data => '* ' + data);
+    features = data.features.split(",").filter(data => data).map(data => '* ' + data);
   }
 
   let credits = data.credits.split(",").filter(data => data).map(data => '* ' + data);

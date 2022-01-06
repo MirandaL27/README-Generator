@@ -17,7 +17,7 @@ const questions = [
         } else {
             console.log('Your name is required.');
             return false;
-            }
+        }
         }
       },
       {
@@ -28,14 +28,22 @@ const questions = [
       {
         type: 'input',
         name: 'username',
-        message: 'What is your github username?'
+        message: 'What is your github username?',
+        validate: userNameInput => {
+          if (userNameInput) {
+            return true;
+          } else {
+            console.log('Your github username is required.');
+            return false;
+          }
+        }
       },
       {
         type: 'input',
         name: 'title',
         message: "What is the title of your project? (Required)",
-        validate: nameInput => {
-            if (nameInput) {
+        validate: titleInput => {
+            if (titleInput) {
             return true;
         } else {
             console.log('The project title is required.');
@@ -47,8 +55,8 @@ const questions = [
         type: 'input',
         name: 'description',
         message: "Write a description for your project (Required)",
-        validate: nameInput => {
-            if (nameInput) {
+        validate: descriptionInput => {
+            if (descriptionInput) {
             return true;
         } else {
             console.log('The project description is required.');
@@ -134,7 +142,8 @@ const promptUser = () => {
 
 // TODO: Create a function to initialize app
 function init() {
-    if(!fileNameArgs){
+  console.log("filename = " + fileNameArgs);
+    if(fileNameArgs.length === 0){
         //use inquirer to display questions to the user and use the user input as data
         promptUser()
         .then((data) => {
