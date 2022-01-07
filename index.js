@@ -123,7 +123,7 @@ const questions = [
       },
       {
         type: 'input',
-        name: 'contributors',
+        name: 'contributions',
         message: 'List guidelines for other developers to contribute to your project, separate each guideline with a comma:'
       },
       {

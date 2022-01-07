@@ -114,7 +114,7 @@ function generateMarkdown(data) {
 
   let credits = data.credits.split(",").filter(data => data).map(data => '* ' + data);
 
-  let contributors = data.credits.split(",").filter(data => data).map(data => '* ' + data);
+  let contributions = data.contributions.split(",").filter(data => data).map(data => '* ' + data);
 
   let tests = data.tests.split(",").filter(data => data).map(data => '* ' + data);
 
@@ -125,7 +125,7 @@ function generateMarkdown(data) {
     use : (usage.length != 0),
     lic : (license != ''),
     feat : (features.length != 0),
-    contrib : (contributors.length != 0),
+    contrib : (contributions.length != 0),
     test : (tests.length != 0)
   }
   let toc = tableOfContents(confirmTableOfContents, tocSection);
@@ -153,7 +153,7 @@ function generateMarkdown(data) {
 
   ${renderLicenseSection(license)}
 
-  ${contributionGuidelinesSection(contributors)}
+  ${contributionGuidelinesSection(contributions)}
 
   ${testsSection(tests)}
 

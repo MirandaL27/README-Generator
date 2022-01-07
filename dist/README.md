@@ -1,6 +1,6 @@
-## README-Generator
+## Weather-Generator
   ## Description
-  An applilcation that generates high quality README's from data provided by the user.
+  This project takes a city name and uses it to produce a weather forecast.
 
   ## Table Of Contents
   * [Technologies](#Built-With)
@@ -10,28 +10,28 @@
   * [Features](#Features)
   * [Questions](#Questions)
   * [License](#License)
-  
+  * [Contributions](#Contribution-Guidelines)
   
   * [Credits](#Credits)
   
 
   ## Built With
-  * Node
+  * HTML
+  * CSS
+  * JavaScript
 
   ## APIs Used
-  * FS
-  *  Inquirer
+  * Node.js
+  * Inquirer
 
   ## Installation
   * Installation: npm install
 
   ## Usage Information
-  * Run Project: Node Index
+  * Run Project: node index.js
 
   ## Features
-  * Takes user input through the command line
-  *  can take a filename as a command line argument
-  *  Can extract data from the user or from a file.
+  * This code can take a user inputed city and use it to create a weather forecast.
 
   ## Questions
   please direct all questions to:
@@ -45,10 +45,11 @@
   * ![alt text](https://img.shields.io/static/v1?label=license&message=MIT&color=brightgreen)
   
 
-  
+  ## Contribution Guidelines
+  * No contributions are allowed at this time.
 
   
 
   ## Credits
   * Miranda Lane
-  
+  * Steven Lane
