@@ -27,7 +27,7 @@ The purpose of this project was to generate a high quality README file from inpu
 Github Repo: https://github.com/MirandaL27/README-Generator
 
 # Walkthrough video
-[video demo of README generator code](walkthrough-video.mp4)
+[video demo of README generator code](hw9-walkthrough-video.mp4)
 
 # Credits
 * Miranda Lane
