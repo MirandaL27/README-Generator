@@ -1,12 +1,13 @@
-## README-Generator
+## Weather-Generator
   ## Description
-  An applilcation that generates high quality README's from data provided by the user.
+  weather-generator
 
   ## Table Of Contents
   * [Technologies](#Built-With)
   * [APIs](#APIs-Used)
-  * [Usage](#Usage)
-  * [Features](#Features)
+  * [Installation](#Installation)
+  * [Usage Information](#Usage-Information)
+  
   * [Questions](#Questions)
   * [License](#License)
   
@@ -15,25 +16,23 @@
   
 
   ## Built With
-  * Node
+  * Node.js
 
   ## APIs Used
-  * FS
-  *  Inquirer
+  * Inquirer
 
-  ## Usage 
-  * Installation: npm install
-  *  Run Project: Node Index
+  ## Installation
+  * npm install
 
-  ## Features
-  * Takes user input through the command line
-  *  can take a filename as a command line argument
-  *  Can extract data from the user or from a file.
+  ## Usage Information
+  * node index
+
+  
 
   ## Questions
   please direct all questions to:
   * github profile: https://github.com/MirandaL27
-  * email: mirandalucsb@gmail.com
+  * email: mirandaldms@gmail.com
 
   
   ## License

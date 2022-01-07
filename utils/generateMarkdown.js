@@ -52,7 +52,8 @@ var tableOfContents = (confirmTableOfContents, sections) =>{
     return `## Table Of Contents
   ${sections.tech ? '* [Technologies](#Built-With)' : ''}
   ${sections.API ? '* [APIs](#APIs-Used)': ''}
-  ${sections.use ? '* [Usage](#Usage)' : ''}
+  ${sections.install ? '* [Installation](#Installation)' : ''}
+  ${sections.use ? '* [Usage Information](#Usage-Information)' : ''}
   ${sections.feat ? '* [Features](#Features)' : ''}
   * [Questions](#Questions)
   ${sections.lic ? '* [License](#License)' : ''}
@@ -69,7 +70,7 @@ var buildWithSection = (technologies) => {
 }
 
 var usageSection = (usage) =>{
-  return (usage.length !=0 ? `## Usage 
+  return (usage.length !=0 ? `## Usage Information
   ${usage.join("\r\n  ")}` : '');
 }
 
@@ -97,6 +98,11 @@ var emailString = (email) =>{
   return (email === '' ? '': `* email: ${email}`);
 }
 
+var installationSection = (installArray) => {
+  return (installArray != 0 ? `## Installation
+  ${installArray.join("\r\n  ")}`: '');
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   let {title,description,name,email,username, confirmTableOfContents, confirmAPIs, confirmFeatures, technologies, license} = data;
@@ -109,6 +115,8 @@ function generateMarkdown(data) {
   technologies = technologies.split(',').filter(data => data).map(data => '* ' + data);
 
   let usage = data.usage.split(",").filter(data => data).map(data => '* ' + data);
+
+  let installationArray = data.installation.split(",").filter(data => data).map(data => '* ' + data);
 
   let features = [];
   if(confirmFeatures){
@@ -124,6 +132,7 @@ function generateMarkdown(data) {
   let tocSection = {
     tech : (technologies != 0),
     API : (APIs.length != 0),
+    install : (installationArray.length != 0),
     use : (usage.length != 0),
     lic : (license != ''),
     feat : (features.length != 0),
@@ -141,6 +150,8 @@ function generateMarkdown(data) {
   ${buildWithSection(technologies)}
 
   ${APIsSection(APIs)}
+
+  ${installationSection(installationArray)}
 
   ${usageSection(usage)}
 

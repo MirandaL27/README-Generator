@@ -89,6 +89,11 @@ const questions = [
       },
       {
         type: 'input',
+        name: 'installation',
+        message: 'Provide installation instructions for your project. Separate each instruction with a comma.',
+      },
+      {
+        type: 'input',
         name: 'usage',
         message: 'Provide usage instructions for your project. Separate each instruction with a comma.',
       },
