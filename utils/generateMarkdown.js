@@ -10,17 +10,6 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-
-// This code is here for testing purposes only!
-//   let licenseChoices = ["MIT", "GNU AGPLv3", "GNU GPLv3", "GNU LGPLv3", "MPL-2.0", "Apache-2.0", "BSL-1.0"];
-//   licenseChoices.forEach( data => {
-//     var test = data.toLowerCase();
-//     test = test.replaceAll("gnu ","");
-//     test = test.replaceAll("v3", "-3.0")
-//     console.log(`https://choosealicense.com/licenses/${test}/`);
-// })
-//End Test Code
-
   if(license){
     let lic = license.toLowerCase();
     lic = lic.replaceAll("gnu ","");
