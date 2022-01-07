@@ -63,7 +63,6 @@ var tableOfContents = (confirmTableOfContents, sections) =>{
 }
 
 var buildWithSection = (technologies) => {
-  console.log(technologies)
   return (technologies.length !=0 ? `## Built With
   ${technologies.join("\r\n  ")}` : '');
 
