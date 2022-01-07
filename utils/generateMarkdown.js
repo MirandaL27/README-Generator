@@ -94,6 +94,10 @@ var featuresSection = (features) =>{
   ${features.join("\r\n  ")}` : '');
 }
 
+var emailString = (email) =>{
+  return (email === '' ? '': `* email: ${email}`);
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   let {title,description,name,email,username, confirmTableOfContents, confirmAPIs, confirmFeatures, technologies, license} = data;
@@ -146,7 +150,7 @@ function generateMarkdown(data) {
   ## Questions
   please direct all questions to:
   * github profile: https://github.com/${username}
-  * email: ${email}
+  ${emailString(email)}
 
   ${renderLicenseSection(license)}
 

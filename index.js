@@ -73,7 +73,7 @@ const questions = [
       {
         type: 'input',
         name: 'technologies',
-        message: 'List the technologies you used during this project separated by comma',
+        message: 'List the technologies you used during this project separated by comma:',
       },
       {
         type: 'confirm',
@@ -124,7 +124,7 @@ const questions = [
       {
           type: 'input',
           name: 'tests',
-          message: 'List the test cases you would like to include separated by comma'
+          message: 'List the test cases you would like to include separated by comma:'
       }
 ];
 
@@ -132,7 +132,7 @@ const questions = [
 function writeToFile(fileName, data) {
     fs.writeFile(fileName,data, err =>{
         if (err) throw new Error(err);
-        console.log('Page created!');
+        console.log('Page created! Check the distribution folder for README.md');
     });
 }
 
@@ -142,13 +142,11 @@ const promptUser = () => {
 
 // TODO: Create a function to initialize app
 function init() {
-  console.log("filename = " + fileNameArgs);
     if(fileNameArgs.length === 0){
         //use inquirer to display questions to the user and use the user input as data
         promptUser()
         .then((data) => {
             const fileName = "./dist/README.md";
-            console.log(fileName,data);
             return writeToFile(fileName, generatePage(data));
         })
         .catch(error =>{

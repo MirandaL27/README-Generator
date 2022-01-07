@@ -25,7 +25,7 @@
   ## Questions
   please direct all questions to:
   * github profile: https://github.com/MirandaL27
-  * email: m@aol.com
+  
 
   
   ## License
